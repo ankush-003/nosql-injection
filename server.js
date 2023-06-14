@@ -73,3 +73,5 @@ app.get('/db', (req, res) => {
 app.listen(port, () => {
     console.log(`server is listening at port ${port}`);
 });
+
+module.exports = app;
