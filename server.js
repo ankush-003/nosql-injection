@@ -15,6 +15,9 @@ mongoose.connect(url, (err) => {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
+app.set('views', './views')
+app.use(express.static('public'));
 
 //logger middleware
 app.use((req, res, next) => {
@@ -24,8 +27,18 @@ app.use((req, res, next) => {
 
 const connectionParams = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 
+app.get('/', (req, res) => {
+    res.render('index', { title: 'Welcome!'});
+});
+
+
 app.post('/user', (req, res) => {
-    let user = User.find({"email": req.body.email, "password": req.body.password}, (err, user) => {
+    const formData = JSON.parse(JSON.stringify(req.body));
+    const email = JSON.parse(JSON.stringify(formData.email));
+    const password = JSON.parse(JSON.stringify(formData.password));
+    console.log(typeof(email), typeof(password));
+    console.log(email, password);
+    let user = User.find({"password": req.body.password}, (err, user) => {
         if (err) throw err;
         if (user.length == 0) {
             res.status(404).send({message: "No user found"});
