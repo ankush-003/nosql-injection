@@ -170,7 +170,7 @@
     return res.json();
 }
 ).then((data) => {
-    console.table(data);
+    console.log(data);
     const result = document.getElementById('result');
     result.style.display = "block";
 
@@ -182,6 +182,7 @@
       <hr>
       </div>`;
     } else {
+      console.table(data.user);
       alert("Login Successfull!");
       result.innerHTML = `<div class="alert alert-success" role="alert">
       <h4 class="alert-heading">Login Successful!</h4>
