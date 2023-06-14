@@ -1,12 +1,13 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+require('dotenv').config();
+const port = 5000;
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
 const User = require('./models/user');
 
-const url = "mongodb+srv://Ankush:ganya@learning.id5ibpg.mongodb.net/test?retryWrites=true&w=majority";
+const url = process.env.MONGODB_URI;
 
 mongoose.connect(url, (err) => {
     if (err) throw err;
