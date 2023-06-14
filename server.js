@@ -7,7 +7,7 @@ const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
 const User = require('./models/user');
 
-const url = process.env.MONGODB_URI;
+const url = process.env.MONGODB_URI || "mongodb+srv://Ankush:ganya@learning.id5ibpg.mongodb.net/test?retryWrites=true&w=majority";
 
 mongoose.connect(url, (err) => {
     if (err) throw err;
