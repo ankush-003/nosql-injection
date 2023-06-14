@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config({ path: './.env' });
 const port = 5000;
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
 const User = require('./models/user');
 
-const url = process.env.MONGODB_URI || "mongodb+srv://Ankush:ganya@learning.id5ibpg.mongodb.net/test?retryWrites=true&w=majority";
+const url = process.env.MONGODB_URI ;
 
 mongoose.connect(url, (err) => {
     if (err) throw err;
