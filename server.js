@@ -44,7 +44,7 @@ app.post('/user', (req, res) => {
             res.status(404).send({message: "No user found"});
         }
         else {
-            res.send(user);
+            res.send({message: "User found", user: user});
         }
     });
 });
