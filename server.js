@@ -2,13 +2,13 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
 dotenv.config({});
-const port = 5000;
+const port = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
 const User = require('./models/user');
 
-const url = process.env.MONGODB_URI ;
+const url = process.env.MONGODB_URI;
 
 mongoose.connect(url, (err) => {
     if (err) throw err;

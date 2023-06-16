@@ -4,3 +4,4 @@ test.mjs
 noSQLInjection.mjs
 vercel.json
 .gitignore
+.env
