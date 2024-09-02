@@ -72,6 +72,24 @@ app.get('/db', (req, res) => {
     });
 });
 
+app.post('/signup', (req, res) => {
+    const formData = JSON.parse(JSON.stringify(req.body));
+    const email = JSON.parse(JSON.stringify(formData.email));
+    const password = JSON.parse(JSON.stringify(formData.password));
+
+    let user = new User({
+        email: email,
+        password: password
+    });
+
+    user.save((err, user) => {
+        if (err) {
+            res.status(500).send({message: "Error saving user", error: err});
+        }
+        res.send({message: "User saved", user: user});
+    });
+});
+
 app.listen(port, () => {
     console.log(`server is listening at port ${port}`);
 });
